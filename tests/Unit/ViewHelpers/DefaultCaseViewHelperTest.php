@@ -19,7 +19,7 @@ class DefaultCaseViewHelperTest extends ViewHelperBaseTestcase
     /**
      * @test
      */
-    public function testThrowsExceptionIfUsedOutsideSwitch()
+    public function testThrowsExceptionIfUsedOutsideSwitch(): void
     {
         $viewHelper = new DefaultCaseViewHelper();
         $this->injectDependenciesIntoViewHelper($viewHelper);
@@ -30,7 +30,7 @@ class DefaultCaseViewHelperTest extends ViewHelperBaseTestcase
     /**
      * @test
      */
-    public function testCallsRenderChildrenWhenUsedInsideSwitch()
+    public function testCallsRenderChildrenWhenUsedInsideSwitch(): void
     {
         $viewHelper = $this->getAccessibleMock(DefaultCaseViewHelper::class, ['renderChildren']);
         $viewHelper->expects($this->once())->method('renderChildren');

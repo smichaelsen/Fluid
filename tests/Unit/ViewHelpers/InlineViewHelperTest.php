@@ -19,7 +19,7 @@ class InlineViewHelperTest extends ViewHelperBaseTestcase
     /**
      * @test
      */
-    public function testInitializeArguments()
+    public function testInitializeArguments(): void
     {
         $instance = $this->getMockBuilder(InlineViewHelper::class)->setMethods(['registerArgument'])->getMock();
         $instance->expects($this->at(0))->method('registerArgument')->with('code', 'string', $this->anything());
@@ -29,7 +29,7 @@ class InlineViewHelperTest extends ViewHelperBaseTestcase
     /**
      * @test
      */
-    public function testCallsExpectedDelegationMethodFromRenderStatic()
+    public function testCallsExpectedDelegationMethodFromRenderStatic(): string
     {
         $contextFixture = new RenderingContextFixture();
 
@@ -41,7 +41,7 @@ class InlineViewHelperTest extends ViewHelperBaseTestcase
 
         $contextFixture->setTemplateParser($parserMock);
 
-        $result = InlineViewHelper::renderStatic([], function() { return 'foo'; }, $contextFixture);
+        $result = InlineViewHelper::renderStatic([], function(): string { return 'foo'; }, $contextFixture);
         $this->assertEquals('bar', $result);
     }
 }
