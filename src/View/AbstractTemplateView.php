@@ -221,6 +221,9 @@ abstract class AbstractTemplateView extends AbstractView
         if ($this->getCurrentRenderingType() === self::RENDERING_LAYOUT) {
             // in case we render a layout right now, we will render a section inside a TEMPLATE.
             $renderingTypeOnNextLevel = self::RENDERING_TEMPLATE;
+            foreach ($variables as $key => $value) {
+                $renderingContext->getVariableProvider()->add($key, $value);
+            }
         } else {
             $renderingContext = clone $renderingContext;
             $renderingContext->setVariableProvider($renderingContext->getVariableProvider()->getScopeCopy($variables));
